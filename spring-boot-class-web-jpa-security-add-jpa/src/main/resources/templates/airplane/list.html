@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common.html :: header">
+    <!-- CSS de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title></title>
+</head>
+<body>
+<div th:replace="common.html :: menu"></div>
+<div class="container mt-3">
+    <h2>Liste des Avions</h2>
+    <a href="/airplanes/new" class="btn btn-primary mb-3">Ajouter un Nouvel Avion</a>
+    <table class="table table-hover table-bordered">
+        <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="airplane : ${airplanes}">
+            <td th:text="${airplane.id}"></td>
+            <td th:text="${airplane.name}"></td>
+            <td>
+                <a th:href="@{/airplanes/edit/{id}(id=${airplane.id})}" class="btn btn-warning btn-sm">Modifier</a>
+                <a th:href="@{/airplanes/delete/{id}(id=${airplane.id})}" class="btn btn-danger btn-sm">Supprimer</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

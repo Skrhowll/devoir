@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="common.html :: header">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div th:replace="common.html :: menu"></div>
+<div class="container mt-3">
+    <h2>Modifier un Avion</h2>
+    <form th:action="@{/airplanes/update/{id}(id=${airplane.id})}" th:object="${airplane}" method="post" class="mt-3">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nom de l'Avion</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}" required>
+        </div>
+        <button type="submit" class="btn btn-success">Mettre à jour</button>
+        <a th:href="@{/airplanes}" class="btn btn-secondary">Annuler</a>
+    </form>
+</div>
+</body>
+</html>
